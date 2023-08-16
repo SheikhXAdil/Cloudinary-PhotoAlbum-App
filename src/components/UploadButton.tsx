@@ -18,12 +18,12 @@ export default function UploadButton() {
     return (
         <Button asChild>
             <CldUploadButton
-                onUpload={(result: UploadResult) => {
+                onUpload={() => {
                     setTimeout(() => {
                         router.refresh();
-                    }, 2000);
+                    }, 1000);
                 }}
-                uploadPreset="giomsr4s"
+                uploadPreset="m9dwtz8q"
             >
                 <div className="flex gap-2">
                     <Upload />

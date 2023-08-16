@@ -1,7 +1,21 @@
+import CloudinaryImage from '@/components/CloudinaryImage'
 import UploadButton from '@/components/UploadButton'
-import React from 'react'
+import cloudinary from "cloudinary"
 
-const GalleryPage = () => {
+type SearchResult = {
+    public_id: string,
+    width: number,
+    height: number
+}
+
+const GalleryPage = async () => {
+
+    const results = (await cloudinary.v2.search
+        .expression('resource_type:image')
+        .sort_by('uploaded_at', 'desc')
+        .max_results(10)
+        .execute()) as { resources: SearchResult[] }
+
     return (
         <section>
             <div className="flex flex-col gap-8">
@@ -10,9 +24,20 @@ const GalleryPage = () => {
                     <UploadButton />
                 </div>
 
-                {/* <SearchForm initialSearch={search} />
-  
-          <GalleryGrid images={results.resources} /> */}
+                <div className='grid grid-cols-4 gap-4'>
+                    {results.resources.map((result) => {
+                        return (
+                            <CloudinaryImage
+                                key={result.public_id}
+                                src={result.public_id}
+                                width={result.width}
+                                height={result.height}
+                                alt="Image of something"
+                            />
+                        )
+                    })}
+                </div>
+
             </div>
         </section>
     )
