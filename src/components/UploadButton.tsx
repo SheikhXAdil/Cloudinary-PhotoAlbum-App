@@ -5,12 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Upload } from 'lucide-react'
 
-type UploadResult = {
-    event: string,
-    info: {
-        public_id: string
-    }
-}
 
 export default function UploadButton() {
     const router = useRouter();
