@@ -1,6 +1,7 @@
 import CloudinaryImage from '@/components/CloudinaryImage'
 import UploadButton from '@/components/UploadButton'
 import cloudinary from "cloudinary"
+import GalleryGrid from './GalleryGrid'
 
 export type SearchResult = {
     public_id: string,
@@ -26,13 +27,7 @@ const GalleryPage = async () => {
                     <UploadButton />
                 </div>
 
-                <div className='grid grid-cols-4 gap-4'>
-                    {results.resources.map((result) => {
-                        return (
-                            <CloudinaryImage key={result.public_id} imageData={result} path="/favorites" />
-                        )
-                    })}
-                </div>
+                <GalleryGrid images={results.resources} />
 
             </div>
         </section>

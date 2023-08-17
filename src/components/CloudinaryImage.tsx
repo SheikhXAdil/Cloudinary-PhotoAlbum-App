@@ -2,18 +2,18 @@
 import { CldImage } from "next-cloudinary";
 import { Heart } from 'lucide-react'
 import { setAsFavoriteAction } from "@/app/gallery/actions";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { SearchResult } from "@/app/gallery/page";
 import { FullHeart } from "@/components/icons/FullHeart";
 import { useRouter } from "next/navigation";
 
-const CloudinaryImage = ({ imageData, path }: { imageData: SearchResult, path: string }) => {
+const CloudinaryImage = ({ imageData, onUnheart }: { imageData: SearchResult, onUnheart?: (unheartedResource: SearchResult) => void }) => {
 
     const router = useRouter()
 
     const [transition, startTransition] = useTransition()
 
-    const isFavorite = imageData.tags.includes("favorite")
+    const [isFavorite, setIsFavorite] = useState(imageData.tags.includes("favorite"))
 
     return (
         <div className="relative">
@@ -28,8 +28,10 @@ const CloudinaryImage = ({ imageData, path }: { imageData: SearchResult, path: s
                 ?
                 <FullHeart
                     onClick={() => {
+                        onUnheart?.(imageData)
+                        setIsFavorite(false)
                         startTransition(() => {
-                            setAsFavoriteAction(imageData.public_id, false, path)
+                            setAsFavoriteAction(imageData.public_id, false)
                             router.refresh()
                         })
                     }}
@@ -38,8 +40,9 @@ const CloudinaryImage = ({ imageData, path }: { imageData: SearchResult, path: s
                 :
                 <Heart
                     onClick={() => {
+                        setIsFavorite(true)
                         startTransition(() => {
-                            setAsFavoriteAction(imageData.public_id, true, path)
+                            setAsFavoriteAction(imageData.public_id, true)
                             router.refresh()
                         })
                     }}
