@@ -1,5 +1,5 @@
 import cloudinary from "cloudinary"
-import { SearchResult } from '@/app/gallery/page'
+import { SearchResult } from '@/app/page'
 import FavoritesList from "@/components/FavoritesList"
 
 const FavoritesPage = async () => {
