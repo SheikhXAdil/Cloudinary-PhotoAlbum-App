@@ -20,7 +20,7 @@ export default function ImageMenu({ image }: { image: SearchResult }) {
 
     return (
         <div className="absolute top-2 right-2">
-            <DropdownMenu>
+            <DropdownMenu open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                     <Button variant="secondary" className="w-6 h-6 p-1">
                         <Menu />
@@ -28,7 +28,7 @@ export default function ImageMenu({ image }: { image: SearchResult }) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-40">
                     <DropdownMenuItem asChild>
-                        <AddToAlbum image={image} />
+                        <AddToAlbum image={image} onClose={() => setOpen(false)} />
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
