@@ -11,7 +11,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import AddToAlbum from "./AddToAlbum"
-import { SearchResult } from "@/app/gallery/page"
+import { SearchResult } from "@/app/page"
 import { useState } from 'react'
 
 export default function ImageMenu({ image }: { image: SearchResult }) {

@@ -1,9 +1,9 @@
 "use client"
 import { CldImage } from "next-cloudinary";
 import { Heart } from 'lucide-react'
-import { setAsFavoriteAction } from "@/app/gallery/actions";
+import { setAsFavoriteAction } from "@/actions/gallery-actions";
 import { useState, useTransition } from "react";
-import { SearchResult } from "@/app/gallery/page";
+import { SearchResult } from "@/app/page";
 import { FullHeart } from "@/components/icons/FullHeart";
 import { useRouter } from "next/navigation";
 import ImageMenu from "./ImageMenu";

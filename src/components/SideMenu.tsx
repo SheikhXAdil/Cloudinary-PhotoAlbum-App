@@ -11,7 +11,7 @@ const SideMenu = () => {
                         Manage
                     </h2>
                     <div className="space-y-1">
-                        <Link href={"/gallery"}>
+                        <Link href={"/"}>
                             <Button variant="ghost" className="w-full justify-start gap-2">
                                 <Image />
                                 Gallery
