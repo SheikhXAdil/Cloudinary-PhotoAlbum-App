@@ -17,12 +17,12 @@ const SideMenu = () => {
                                 Gallery
                             </Button>
                         </Link>
-                        {/* <Link href={"/albums"}>
+                        <Link href={"/albums"}>
                             <Button variant="ghost" className="w-full justify-start gap-2">
                                 <Folder />
                                 View Albums
                             </Button>
-                        </Link> */}
+                        </Link>
                         <Link href={"/favorites"}>
                             <Button variant="ghost" className="w-full justify-start gap-2">
                                 <Heart />

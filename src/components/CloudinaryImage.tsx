@@ -6,6 +6,7 @@ import { useState, useTransition } from "react";
 import { SearchResult } from "@/app/gallery/page";
 import { FullHeart } from "@/components/icons/FullHeart";
 import { useRouter } from "next/navigation";
+import ImageMenu from "./ImageMenu";
 
 const CloudinaryImage = ({ imageData, onUnheart }: { imageData: SearchResult, onUnheart?: (unheartedResource: SearchResult) => void }) => {
 
@@ -35,7 +36,7 @@ const CloudinaryImage = ({ imageData, onUnheart }: { imageData: SearchResult, on
                             router.refresh()
                         })
                     }}
-                    className="absolute top-2 right-2 hover:text-white text-red-600 cursor-pointer"
+                    className="absolute top-2 left-2 hover:text-white text-red-600 cursor-pointer"
                 />
                 :
                 <Heart
@@ -46,9 +47,10 @@ const CloudinaryImage = ({ imageData, onUnheart }: { imageData: SearchResult, on
                             router.refresh()
                         })
                     }}
-                    className="absolute top-2 right-2 hover:text-red-600 cursor-pointer"
+                    className="absolute top-2 left-2 hover:text-red-600 cursor-pointer"
                 />
             }
+            <ImageMenu image={imageData} />
         </div>
     )
 }

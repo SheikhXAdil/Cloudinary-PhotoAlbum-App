@@ -1,4 +1,3 @@
-import CloudinaryImage from '@/components/CloudinaryImage'
 import UploadButton from '@/components/UploadButton'
 import cloudinary from "cloudinary"
 import GalleryGrid from './GalleryGrid'
