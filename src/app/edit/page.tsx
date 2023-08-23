@@ -89,7 +89,9 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                             src={publicId}
                             width="400"
                             height="300"
-                            blur="800"
+                            effects={[{
+                                blur: "800"
+                            }]}
                             alt="some image"
                         />
                     )}
@@ -99,7 +101,9 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                             src={publicId}
                             width="400"
                             height="300"
-                            grayscale
+                            effects={[{
+                                grayscale: true
+                            }]}
                             alt="some image"
                         />
                     )}
@@ -109,7 +113,9 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                             src={publicId}
                             width="400"
                             height="300"
-                            pixelate
+                            effects={[{
+                                pixelate: true
+                            }]}
                             alt="some image"
                         />
                     )}
@@ -119,7 +125,9 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                             src={publicId}
                             width="400"
                             height="300"
-                            tint="equalize:80:blue:blueviolet"
+                            effects={[{
+                                tint: "equalize:80:blue:blueviolet"
+                            }]}
                             alt="some image"
                         />
                     )}
