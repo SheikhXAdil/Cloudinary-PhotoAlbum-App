@@ -1,6 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { CldImage } from "next-cloudinary"
 import { useState } from 'react'
 
@@ -14,7 +16,11 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
         | "grayscale"
         | "pixelate"
         | "bg-remove"
+        | "tint"
     >();
+
+    const [pendingPrompt, setPendingPrompt] = useState("");
+    const [prompt, setPrompt] = useState("");
 
     return (
         <section>
@@ -34,11 +40,16 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                         <Button
                             onClick={() => {
                                 setTransformation("generative-fill");
+                                setPrompt(pendingPrompt);
                             }}
                         >
                             Apply Generative Fill
                         </Button>
-
+                        <Label>Prompt</Label>
+                        <Input
+                            value={pendingPrompt}
+                            onChange={(e) => setPendingPrompt(e.currentTarget.value)}
+                        />
                     </div>
 
                     <Button onClick={() => setTransformation("blur")}>Apply Blur</Button>
@@ -47,6 +58,9 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                     </Button>
                     <Button onClick={() => setTransformation("pixelate")}>
                         Pixelate
+                    </Button>
+                    <Button onClick={() => setTransformation("tint")}>
+                        Tint
                     </Button>
 
                     <Button onClick={() => setTransformation("bg-remove")}>
@@ -60,11 +74,13 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                     {transformation === "generative-fill" && (
                         <CldImage
                             src={publicId}
-                            width="400"
-                            height="300"
+                            width="1400"
+                            height="900"
                             alt="some image"
                             crop="pad"
-                            fillBackground
+                            fillBackground={{
+                                prompt,
+                            }}
                         />
                     )}
 
@@ -98,6 +114,16 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                         />
                     )}
 
+                    {transformation === "tint" && (
+                        <CldImage
+                            src={publicId}
+                            width="400"
+                            height="300"
+                            tint="equalize:80:blue:blueviolet"
+                            alt="some image"
+                        />
+                    )}
+
                     {transformation === "bg-remove" && (
                         <CldImage
                             src={publicId}
@@ -105,6 +131,7 @@ const EditPage = ({ searchParams: { publicId } }: { searchParams: { publicId: st
                             height="300"
                             removeBackground
                             alt="some image"
+
                         />
                     )}
 
