@@ -1,6 +1,6 @@
 import {
     Menu,
-    Folder
+    Pencil
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -13,6 +13,7 @@ import {
 import AddToAlbum from "./AddToAlbum"
 import { SearchResult } from "@/app/page"
 import { useState } from 'react'
+import Link from "next/link"
 
 export default function ImageMenu({ image }: { image: SearchResult }) {
 
@@ -29,6 +30,14 @@ export default function ImageMenu({ image }: { image: SearchResult }) {
                 <DropdownMenuContent className="w-40">
                     <DropdownMenuItem asChild>
                         <AddToAlbum image={image} onClose={() => setOpen(false)} />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Button className="cursor-pointer flex justify-start pl-4" asChild variant="ghost" >
+                            <Link href={`/edit?publicId=${encodeURIComponent(image.public_id)}`} >
+                                <Pencil className="mr-2 w-4 h-4" />
+                                Edit
+                            </Link>
+                        </Button>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
