@@ -11,7 +11,7 @@ const SideMenu = async () => {
     };
 
     return (
-        <div className="pb-12 w-1/4">
+        <section className='hidden md:block pb-12 w-1/4'>
             <div className="space-y-4 py-4">
                 <div className="px-3 py-2">
                     <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
@@ -46,7 +46,7 @@ const SideMenu = async () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

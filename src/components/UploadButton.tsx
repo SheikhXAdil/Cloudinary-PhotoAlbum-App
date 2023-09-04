@@ -19,8 +19,8 @@ export default function UploadButton() {
                 }}
                 uploadPreset="m9dwtz8q"
             >
-                <div className="flex gap-2">
-                    <Upload />
+                <div className="flex gap-2 tsxt-sm md:text-base">
+                    <Upload className="w-5 md:w-6 h-5 md:h-6" />
                     Upload
                 </div>
             </CldUploadButton>

@@ -26,7 +26,7 @@ const GalleryPage = async ({ searchParams: { search } }: { searchParams: { searc
 
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
-          <h1 className="text-4xl font-bold">Gallery</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Gallery</h1>
           <UploadButton />
         </div>
 
